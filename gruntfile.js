@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 			scripts: {
 					files: ['**/*.php',
 					'components/scripts/**/*.js',
-					'components/sass/**/*.scss'],
+					'**/*.scss'],
 					tasks: ['concat', 'sass']
 			}
 		} //watch
@@ -39,8 +39,6 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('grunt-bower-concat');
-	grunt.loadNpmTasks('grunt-wiredep');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 
