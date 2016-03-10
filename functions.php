@@ -36,6 +36,8 @@ function _tk_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	*/
 	add_theme_support( 'post-thumbnails' );
+	// add thumbnail size below if needed
+	//set_post_thumbnail_size( 450, 150, array( 'center', 'center')  );
 
 	/**
 	 * Enable support for Post Formats
@@ -120,6 +122,17 @@ function _tk_scripts() {
 }
 add_action( 'wp_enqueue_scripts', '_tk_scripts' );
 
+
+/**
+* load google fonts example below (update link to google font to load personal fonts
+*/
+// function load_fonts() {
+//     wp_register_style('et-googleFonts', 'https://fonts.googleapis.com/css?family=Abril+Fatface|Ultra|Libre+Baskerville'); 
+//     wp_enqueue_style( 'et-googleFonts');
+// }
+// add_action('wp_print_styles', 'load_fonts'); 
+
+
 /**
  * Implement the Custom Header feature.
  */
@@ -154,6 +167,27 @@ require get_template_directory() . '/includes/bootstrap-wp-navwalker.php';
 //
 //
 //
+
+/* Add Next Page Button in First Row */
+add_filter( 'mce_buttons', 'my_add_next_page_button', 1, 2 ); // 1st row
+ 
+/**
+ * Add Next Page/Page Break Button
+ * in WordPress Visual Editor
+ * 
+ * @link https://shellcreeper.com/?p=889
+ */
+function my_add_next_page_button( $buttons, $id ){
+ 
+    /* only add this for content editor */
+    if ( 'content' != $id )
+        return $buttons;
+ 
+    /* add next page after more tag button */
+    array_splice( $buttons, 13, 0, 'wp_page' );
+ 
+    return $buttons;
+}
 
 //this function queues in live reload for development through grunt-contrib-watch
 
