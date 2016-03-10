@@ -16,7 +16,7 @@ get_header(); ?>
 		<?php // start the loop. ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'search' ); ?>
+			<?php get_template_part( 'template-parts/content', 'search' ); ?>
 
 		<?php endwhile; ?>
 
